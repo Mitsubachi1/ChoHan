@@ -9,10 +9,12 @@ Die::Die() {
 	value = 0;
 }
 Die::Die(int numSides) { //enables the random number generator given time
-	srand(time(NULL));
 	sides = numSides;
+	srand(time(NULL));
+	
 }
 void Die::roll() {
+	
 	value = rand() % sides + 1; //takes a RNG from 1 to given sides
 	
 }

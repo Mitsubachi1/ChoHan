@@ -5,13 +5,13 @@
 using namespace std;
 
 
-ChoHan::ChoHan(int numRounds) {
+ChoHan::ChoHan(int numRounds) { //sets number of rounds and beings the game
 	maxRounds = numRounds;
-	Die sides(6);
+	
 	start();
 
 }
-void ChoHan::start() {
+void ChoHan::start() {	//asks for both player names
 	
 	string player1name, player2name;
 	cout << "Welcome to the game of Cho-Han!" << endl;
@@ -20,19 +20,19 @@ void ChoHan::start() {
 	
 	cout << "Enter the second player's name: ";
 	getline(cin, player2name);
-	player1.setName(player1name);
+	player1.setName(player1name); //sets up both players and data values
 	player2.setName(player2name);
-	for (int i = 0; i < maxRounds; i++)
+	for (int i = 0; i < maxRounds; i++)	//round begins and loops the number of rounds provided
 	{
 		cout << "----------------------------\n";
 		cout << "Now playing round " << (i + 1)
 			<< endl;
-
+		
 		playRound();
 	}
 	displayGrandWinner();
 }
-void ChoHan::playRound() {
+void ChoHan::playRound() { //allows both players to guesss either even(Cho) or odd(Han)
 	Dealer dealer;
 	string guess;
 	dealer.rollDice();
@@ -43,13 +43,13 @@ void ChoHan::playRound() {
 	cin >> guess;
 	player2.setGuess(guess);
 	cout << "Dealer rolled " << dealer.getDie1Value() << " and " << dealer.getDie2Value() << endl;
-	cout << dealer.getChoOrHan() << endl;
+	//cout << dealer.getChoOrHan() << endl; //DEBUG
 	checkGuess(player1,dealer);
 	checkGuess(player2, dealer);
 	
 
 }
-void ChoHan::checkGuess(Player& player, Dealer& dealer) {
+void ChoHan::checkGuess(Player& player, Dealer& dealer) { //checks both player guesses and awards whoever got it right
 	
 	string guess = player.getGuess(); 
 	cout << player.getName() << " guessed " << player.getGuess() << endl;
